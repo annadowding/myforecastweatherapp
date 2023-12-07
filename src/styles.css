@@ -109,8 +109,7 @@ footer {
 
 .forecastBlock {
   display: flex;
-  /* flex-w/rap: wrap; */
-  /* justify-content: space-around; */
+  justify-content: space-around;
   text-align: center;
   line-height: 30px;
 }
@@ -134,6 +133,6 @@ footer {
 .forecastIcon {
   display: block;
   margin: 0 auto;
-  width: 80px;
+  width: 90px;
   text-align: center;
 }
