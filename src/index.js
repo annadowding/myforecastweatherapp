@@ -88,27 +88,35 @@ function getForecast(cityName) {
 }
 
 function displayForecast(response) {
-  console.log(response);
+  console.log(response.data);
 
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `<div class="forecast">
-    <div class="forecastDay">${day}</div>
-    <div class="forecastIcon">🌄</div>
+    <div class="forecastDay">Tue</div>
+    <div class="forecastIcon"><img src = "${
+      day.condition.icon_url
+    }" class="forecastIcon"></div>
     <div class="forecastTemperatures">
-      <div class="temperatureHigh">12&deg;</div>
-      <div class="temperatureLow">9&deg;</div>
-    </div>
-  </div>`;
+      <div class="temperatureHigh">${Math.round(
+        day.temperature.maximum
+      )}&deg;</div>
+      <div class="temperatureLow">${Math.round(
+        day.temperature.minimum
+      )}&deg;</div>
+      </div>
+      </div>`;
+    forecastBlock.innerHTML = forecastHtml;
   });
-
-  let forecastBlock = document.querySelector("#forecastBlock");
-  forecastBlock.innerHTML = forecastHtml;
 }
+
+let forecastBlock = document.querySelector("#forecastBlock");
+// forecastBlock.innerHTML = forecastHtml;
 
 makeTheApiKeyMatchTheCity("Paris");
 displayForecast();
+
+// response.data.daily.temperature.minimum
